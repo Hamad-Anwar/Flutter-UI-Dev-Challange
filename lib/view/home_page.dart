@@ -1,20 +1,27 @@
 import 'package:challange/res/static_wiget_list.dart';
 import 'package:flutter/material.dart';
+
+import 'package:swipe_cards/swipe_cards.dart';
 import 'package:swipeable_card_stack/swipeable_card_stack.dart';
 
 import '../utils/outline_text.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller=SwipeableCardSectionController();
+  final controller = SwipeableCardSectionController();
+  int currentIndex = 2;
+
   @override
   Widget build(BuildContext context) {
-    var size=MediaQuery.sizeOf(context);
+    var size = MediaQuery.sizeOf(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -35,27 +42,19 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 50,
             ),
-             SingleChildScrollView(
+            SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  OutlineText(text: '2012',),
-                  OutlineText(text: '2013',),
-                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Opacity(
-                      opacity: 0.99,
-                      child: Text(
-                        "2014",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
-                      ),
-                    ),
+                  OutlineText(text: "2012"),
+                  OutlineText(text: "2013"),
+                  Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text("2014",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 40),),
+
                   ),
-                  OutlineText(text: '2015'),
-                  OutlineText(text:'2016'),
+                  OutlineText(text: "2015"),
+                  OutlineText(text: "2016"),
                 ],
               ),
             ),
@@ -63,16 +62,24 @@ class _HomePageState extends State<HomePage> {
               height: 50,
             ),
             Expanded(
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: cardWidgets
-
-                ))
+                child: Align(
+              alignment: Alignment.bottomCenter,
+              child: SwipeCards(
+                matchEngine: MatchEngine(swipeItems: [
+                  SwipeItem(),
+                  SwipeItem(),
+                ]),
+                onStackFinished: () {},
+                itemBuilder: (context, index) {
+                  return Align(
+                      alignment: Alignment.bottomCenter,
+                      child: cardWidgets[index]);
+                },
+              ),
+            ))
           ],
         ),
       ),
     );
   }
 }
-
-

@@ -1,3 +1,4 @@
+import 'package:challange/res/static_wiget_list.dart';
 import 'package:challange/utils/outline_text.dart';
 import 'package:challange/view/detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class CarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var size=MediaQuery.sizeOf(context);
     return Hero(
-      tag: 'TAG$index',
+      tag:  tags[index],
       child: Material(
 
         child: GestureDetector(
@@ -18,17 +19,15 @@ class CarWidget extends StatelessWidget {
             Navigator.push(context , PageRouteBuilder(
               transitionDuration: const Duration(milliseconds: 800),
               pageBuilder: (context, animation, secondaryAnimation) {
-              return DetailScreen(tag : "TAG$index");
+              return DetailScreen(index: index,);
             },));
           },
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 500),
+          child: Container(
             width: double.infinity,
-            height: index==0?size.height/1.5 :size.height/1.47,
-            margin: index==0 ? EdgeInsets.zero : const EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              color: index==0 ? Colors.black : Colors.grey.withOpacity(.4),
-              borderRadius: const BorderRadius.only(
+            height: size.height/1.5 ,
+            decoration: const BoxDecoration(
+              color: Colors.black ,
+              borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20)),
             ),
@@ -75,7 +74,7 @@ class CarWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Image.asset(Images.car1),
+                  child: Image.asset(images[index]),
                 ),
                 const SizedBox(
                   height: 20,

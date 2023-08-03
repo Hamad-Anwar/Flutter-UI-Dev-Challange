@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:challange/res/static_wiget_list.dart';
 import 'package:challange/utils/outline_text.dart';
 import 'package:challange/view/home_page.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import '../res/image_assets.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({super.key, required this.tag});
-  final String tag;
+  const DetailScreen({super.key, required this.index});
+  final int index;
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
@@ -22,7 +23,7 @@ class _DetailScreenState extends State<DetailScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(milliseconds: 800), () {
+    Timer(const Duration(milliseconds: 1000), () {
       setState(() {
         anim = true;
       });
@@ -40,20 +41,13 @@ class _DetailScreenState extends State<DetailScreen>
         Timer(
           const Duration(milliseconds: 800),
           () {
-            Navigator.push(
-                context,
-                PageRouteBuilder(
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return const HomePage();
-                  },
-                ));
+            Navigator.pop(context);
           },
         );
         return false;
       },
       child: Hero(
-        tag: widget.tag,
+        tag: tags[widget.index],
         child: Scaffold(
           backgroundColor: Colors.black,
           body: Stack(
@@ -125,10 +119,10 @@ class _DetailScreenState extends State<DetailScreen>
                               left: anim ? size.width / 5 : 10,
                               right:anim ? -200:20,
                               height: anim ? 170 : 150,
-                              bottom: 3,
+                              bottom: 0,
                               duration: const Duration(milliseconds: 800),
 
-                              child: Image.asset(Images.car1))
+                              child: Image.asset(images[widget.index]))
                         ],
                       ),
                     ),

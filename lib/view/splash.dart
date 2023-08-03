@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:challange/res/static_wiget_list.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
@@ -31,7 +32,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: 'TAG0',
+      tag: tags[0],
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Center(

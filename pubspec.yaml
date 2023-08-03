@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   swipeable_card_stack: ^0.0.5
   swipe_cards: ^2.0.0+1
+  scroll_snap_list: ^0.9.1
+  wheel_chooser: ^1.1.2
 
 dev_dependencies:
   flutter_test:
