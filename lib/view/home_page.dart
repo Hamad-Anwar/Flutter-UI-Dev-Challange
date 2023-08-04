@@ -2,7 +2,7 @@ import 'package:challange/res/static_wiget_list.dart';
 import 'package:flutter/material.dart';
 
 import 'package:swipe_cards/swipe_cards.dart';
-import 'package:swipeable_card_stack/swipeable_card_stack.dart';
+
 
 import '../utils/outline_text.dart';
 
@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = SwipeableCardSectionController();
+
   int currentIndex = 2;
 
   @override
