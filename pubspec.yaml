@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   swipe_cards: ^2.0.0+1
+  swipeable_card_stack: ^0.0.5
 
 
 dev_dependencies:
